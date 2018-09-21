@@ -9,14 +9,18 @@ sudo apt-get install -y apache2
 touch /etc/apache2/sites-available/golsite.conf
 cat << EOF | sudo tee -a /etc/apache2/sites-available/golsite.conf
 <VirtualHost *:80>
+
   ServerName golsite.vm
   ServerAlias *.golsite.vm
   DirectoryIndex index.php index.html
   DocumentRoot /var/www/public
     <Directory /var/www/public/ >
       Options Indexes FollowSymLinks
-      AllowOverride All
+      AllowOverride None
       Require all granted
+      Allow from All
+
+      FallbackResource /index.php
     </Directory>
 </VirtualHost>
 EOF
@@ -60,5 +64,3 @@ sudo apt-get clean
 sudo rm -rf /var/www/html
 
 sudo service apache2 restart
-
-composer install
