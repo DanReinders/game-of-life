@@ -1,9 +1,10 @@
-# Created by .ignore support plugin (hsz.mobi)
 ### Vagrant template
 # General
 .vagrant/
 
-# Log files (if you are creating logs in debug mode, uncomment this)
-# *.logs
-
-html/index.html
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
