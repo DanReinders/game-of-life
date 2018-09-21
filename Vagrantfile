@@ -74,7 +74,7 @@ config.vm.provider "parallels" do |prl|
   prl.update_guest_tools = true
   prl.memory = 2048
   prl.cpus = 2
-  prl.name = "mysite"
+  prl.name = "golsite"
 end
 
 # SSH

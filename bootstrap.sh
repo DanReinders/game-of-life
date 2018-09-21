@@ -6,11 +6,11 @@ sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install -y apache2
 
-touch /etc/apache2/sites-available/mysite.conf
-cat << EOF | sudo tee -a /etc/apache2/sites-available/mysite.conf
+touch /etc/apache2/sites-available/golsite.conf
+cat << EOF | sudo tee -a /etc/apache2/sites-available/golsite.conf
 <VirtualHost *:80>
-  ServerName mysite.vm
-  ServerAlias *.mysite.vm
+  ServerName golsite.vm
+  ServerAlias *.golsite.vm
   DirectoryIndex index.php index.html
   DocumentRoot /var/www/public
     <Directory /var/www/public/ >
@@ -22,7 +22,7 @@ cat << EOF | sudo tee -a /etc/apache2/sites-available/mysite.conf
 EOF
 
 sudo a2dissite 000-default.conf
-sudo a2ensite mysite.conf
+sudo a2ensite golsite.conf
 sudo a2enmod rewrite actions
 
 sudo apt-get install -y php7.2 php7.2-curl php7.2-xml php7.2-zip php7.2-gd php7.2-mysql php7.2-mbstring php-xdebug
@@ -56,6 +56,8 @@ sudo apt-get install yarn
 # Cleanup
 sudo apt-get -y autoremove
 sudo apt-get clean
+
+sudo rm -rf /var/www/html
 
 sudo service apache2 restart
 
