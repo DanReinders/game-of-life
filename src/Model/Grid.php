@@ -11,7 +11,7 @@ class Grid
         $grid = [];
         for ($q = 0; $q < $size; $q++) {
             for ($r = 0; $r < $size; $r++) {
-                $grid[$q][$r] = '-';
+                $grid[$q][$r] = '.';
             }
         }
 
@@ -28,12 +28,22 @@ class Grid
         return $this->grid;
     }
 
+    public function setGridFromString(string $string): void
+    {
+        $newData = explode('<br>', $string);
+        foreach ($newData as $key => $string) {
+            $grid[$key] = str_split($string);
+        }
+        $this->grid = $grid;
+    }
+
     public function toString(): string
     {
         $string = null;
         foreach ($this->grid as $row => $columns) {
-            $string .= implode('', $columns).'<br />';
+            $string[] = implode('', $columns);
         }
+        $string = implode('<br>', $string);
 
         return $string;
     }
@@ -73,7 +83,7 @@ class Grid
                         $newState[$y][$x] = 'X';
                     } else {
                         // cell dies
-                        $newState[$y][$x] = '-';
+                        $newState[$y][$x] = '.';
                     }
                 } else {
                     if ($liveCellCount == 3) {
@@ -81,7 +91,7 @@ class Grid
                         $newState[$y][$x] = 'X';
                     } else {
                         // no cell
-                        $newState[$y][$x] = '-';
+                        $newState[$y][$x] = '.';
                     }
 
                 }

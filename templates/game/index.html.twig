@@ -34,3 +34,8 @@
     </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/js/update-image.js"></script>
+{% endblock %}
