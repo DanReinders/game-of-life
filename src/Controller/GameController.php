@@ -50,6 +50,11 @@ class GameController extends AbstractController
         $grid = new Grid();
 
         $grid->setGridFromString($params['grid']);
+
+        if (isset($params['glider']) && $params['glider']) {
+            $grid->addGlider();
+        }
+
         $grid->executeLifeCycle();
 
         return new JsonResponse(['grid' => $grid->toString()]);
