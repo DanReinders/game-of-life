@@ -27,6 +27,13 @@
 
     <div class="example-wrapper">
         <h1>Hello Conway's Game of Life Fans!</h1>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <input type="submit" />
+        {{ form_end(form) }}
     </div>
 
     <div class="js-grid code">
@@ -36,6 +43,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script type="application/javascript">var lifecycles = {{ lifecycles }};</script>
     {{ parent() }}
     <script src="/js/update-image.js"></script>
 {% endblock %}

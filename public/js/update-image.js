@@ -1,7 +1,7 @@
 var i = 1;
 
 function updateGrid() {
-    if (i > 100) {
+    if (i > lifecycles) {
         return;
     }
 
@@ -24,5 +24,7 @@ function updateGrid() {
 }
 
 $(document).ready(function () {
-    updateGrid();
+    if (lifecycles) {
+        updateGrid();
+    }
 });
